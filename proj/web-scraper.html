@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scraper - VR Logistics</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/animations.css" rel="stylesheet">
+    <link href="css/dark-theme.css" rel="stylesheet">
+    <style>
+        .loader {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #0d6efd;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+            display: none;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        #results-container {
+            max-height: 600px;
+            overflow-y: auto;
+            display: none;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: -16px;
+            margin-top: 20px;
+            background-color: #f8f9fa;
+        }
+        
+        .url-input-group {
+            margin-bottom: 10px;
+        }
+        
+        #add-url-btn {
+            margin-bottom: 20px;
+        }
+        
+        .dark-mode #results-container {
+            background-color: #2d2d2d;
+            border-color: #444;
+            color: #f8f9fa;
+        }
+        
+        .dark-mode .card {
+            background-color: #333;
+            color: #fff;
+        }
+        
+        .dark-mode pre {
+            background-color: #222;
+            color: #eaeaea;
+            border-color: #444;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/logo.svg" alt="VR Logistics Logo" height="30">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="web-scraper.html">Web Scraper</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <div id="theme-toggle-container"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header bg-primary text-white py-5 mb-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 animated">
+                    <h1 class="display-4">Web Scraper Tool</h1>
+                    <p class="lead">Extract readable content from websites for analysis and research</p>
+                </div>
+                <div class="col-lg-4 text-center animated">
+                    <i class="fas fa-spider fa-6x text-white-50"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto animated">
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header bg-light">
+                            <h4 class="mb-0"><i class="fas fa-globe me-2"></i>Enter Website URL(s)</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-4">
+                                <p>This tool extracts the main content from web pages, removing navigation, ads, and other clutter. Enter one or more URLs below to get started.</p>
+                            </div>
+                            
+                            <form id="scraper-form">
+                                <div id="urls-container">
+                                    <div class="url-input-group">
+                                        <label for="url1" class="form-label">Website URL:</label>
+                                        <input type="url" class="form-control url-input" id="url1" placeholder="https://example.com" required>
+                                    </div>
+                                </div>
+                                
+                                <button type="button" id="add-url-btn" class="btn btn-outline-secondary mt-2">
+                                    <i class="fas fa-plus me-2"></i>Add Another URL
+                                </button>
+                                
+                                <div class="d-grid gap-2">
+                                    <button type="submit" id="scrape-btn" class="btn btn-primary">
+                                        <i class="fas fa-search me-2"></i>Extract Content
+                                    </button>
+                                </div>
+                            </form>
+                            
+                            <div class="loader" id="loading-spinner"></div>
+                            
+                            <div id="error-alert" class="alert alert-danger mt-3" style="display: none;"></div>
+                        </div>
+                    </div>
+                    
+                    <div id="results-container" class="animated">
+                        <div class="card">
+                            <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                                <h4 class="mb-0"><i class="fas fa-file-alt me-2"></i>Extracted Content</h4>
+                                <button id="copy-btn" class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-copy me-1"></i>Copy
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <div id="results-output"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 animated">
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header bg-light">
+                            <h4 class="mb-0"><i class="fas fa-info-circle me-2"></i>About This Tool</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>Our web scraper tool uses advanced techniques to extract the main content from websites, making it easier to:</p>
+                            <ul>
+                                <li>Research competitors</li>
+                                <li>Gather industry news and data</li>
+                                <li>Monitor market trends</li>
+                                <li>Extract relevant information from articles</li>
+                                <li>Save content for offline analysis</li>
+                            </ul>
+                            <p>The tool removes ads, navigation menus, footers, and other distracting elements, leaving only the essential content.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header bg-light">
+                            <h4 class="mb-0"><i class="fas fa-lightbulb me-2"></i>Usage Tips</h4>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Enter complete URLs including the "https://" part</li>
+                                <li>Works best on article pages, blog posts, and news sites</li>
+                                <li>May not work on pages requiring login or with heavy JavaScript</li>
+                                <li>Use responsibly and respect website terms of service</li>
+                                <li>For multiple URLs, content will be processed sequentially</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-light">
+                            <h4 class="mb-0"><i class="fas fa-code me-2"></i>Technical Details</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>This tool is powered by:</p>
+                            <ul>
+                                <li>Trafilatura - an advanced Python library for web content extraction</li>
+                                <li>Flask - a lightweight web framework for the backend API</li>
+                                <li>Bootstrap - for responsive design and UI components</li>
+                                <li>JavaScript - for seamless client-side interactions</li>
+                            </ul>
+                            <p>The extraction process focuses on identifying and preserving the main content while removing boilerplate elements.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-5 bg-light">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-lg-8 mx-auto animated">
+                    <h2 class="mb-4">Need More Advanced Data Solutions?</h2>
+                    <p class="lead mb-4">Our team can help with custom data extraction, analysis, and integration services tailored to your business needs.</p>
+                    <a href="contact.html" class="btn btn-primary btn-lg">Contact Our Data Team</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <img src="assets/logo.svg" alt="VR Logistics Logo" class="img-fluid mb-4" style="height: 40px;">
+                    <p>VR Logistics provides comprehensive supply chain management solutions to businesses worldwide. Our expertise in logistics ensures that your products reach customers efficiently and safely.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-lg-0 footer-links">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 footer-links">
+                    <h5>Services</h5>
+                    <ul>
+                        <li><a href="#">Warehousing</a></li>
+                        <li><a href="#">Transportation</a></li>
+                        <li><a href="#">Supply Chain</a></li>
+                        <li><a href="#">Distribution</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h5>Contact Info</h5>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Logistics Way, Bangalore, 560001</li>
+                        <li><i class="fas fa-phone"></i> +91 9876543210</li>
+                        <li><i class="fas fa-envelope"></i> info@vrlogistics.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row footer-bottom">
+                <div class="col-12 text-center">
+                    <p class="mb-0">&copy; 2023 VR Logistics. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="js/scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Counter for URL inputs
+            let urlCounter = 1;
+            
+            // Add URL input button
+            document.getElementById('add-url-btn').addEventListener('click', function() {
+                urlCounter++;
+                const newInput = document.createElement('div');
+                newInput.className = 'url-input-group';
+                newInput.innerHTML = `
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <label for="url${urlCounter}" class="form-label">Website URL:</label>
+                            <input type="url" class="form-control url-input" id="url${urlCounter}" placeholder="https://example.com" required>
+                        </div>
+                        <div class="ms-2 d-flex align-items-end">
+                            <button type="button" class="btn btn-outline-danger remove-url-btn mb-1">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                document.getElementById('urls-container').appendChild(newInput);
+                
+                // Add remove button event listener
+                newInput.querySelector('.remove-url-btn').addEventListener('click', function() {
+                    newInput.remove();
+                });
+            });
+            
+            // Form submission handler
+            document.getElementById('scraper-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Show loading spinner
+                document.getElementById('loading-spinner').style.display = 'block';
+                
+                // Hide previous results and errors
+                document.getElementById('results-container').style.display = 'none';
+                document.getElementById('error-alert').style.display = 'none';
+                
+                // Get all URLs
+                const urls = Array.from(document.querySelectorAll('.url-input')).map(input => input.value.trim()).filter(url => url !== '');
+                
+                if (urls.length === 0) {
+                    showError('Please enter at least one valid URL');
+                    return;
+                }
+                
+                // Choose endpoint based on number of URLs
+                const endpoint = urls.length === 1 ? '/api/scrape' : '/api/scrape-multiple';
+                const payload = urls.length === 1 ? { url: urls[0] } : { urls: urls };
+                
+                // Make API request
+                fetch(endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Hide loading spinner
+                    document.getElementById('loading-spinner').style.display = 'none';
+                    
+                    if (!data.success) {
+                        showError(data.error || 'Failed to extract content');
+                        return;
+                    }
+                    
+                    // Process and display results
+                    displayResults(data, urls.length === 1);
+                })
+                .catch(error => {
+                    document.getElementById('loading-spinner').style.display = 'none';
+                    showError('Error: ' + error.message);
+                });
+            });
+            
+            // Copy button handler
+            document.getElementById('copy-btn').addEventListener('click', function() {
+                const textToCopy = document.getElementById('results-output').innerText;
+                
+                navigator.clipboard.writeText(textToCopy).then(function() {
+                    // Change button text temporarily
+                    const copyBtn = document.getElementById('copy-btn');
+                    const originalHtml = copyBtn.innerHTML;
+                    copyBtn.innerHTML = '<i class="fas fa-check me-1"></i>Copied!';
+                    copyBtn.classList.remove('btn-outline-primary');
+                    copyBtn.classList.add('btn-success');
+                    
+                    setTimeout(function() {
+                        copyBtn.innerHTML = originalHtml;
+                        copyBtn.classList.remove('btn-success');
+                        copyBtn.classList.add('btn-outline-primary');
+                    }, 2000);
+                }, function() {
+                    showError('Failed to copy text');
+                });
+            });
+            
+            // Function to display error messages
+            function showError(message) {
+                const errorAlert = document.getElementById('error-alert');
+                errorAlert.style.display = 'block';
+                errorAlert.textContent = message;
+                document.getElementById('loading-spinner').style.display = 'none';
+            }
+            
+            // Function to display results
+            function displayResults(data, isSingleUrl) {
+                const resultsContainer = document.getElementById('results-container');
+                const resultsOutput = document.getElementById('results-output');
+                
+                resultsContainer.style.display = 'block';
+                resultsOutput.innerHTML = '';
+                
+                if (isSingleUrl) {
+                    // Single URL result
+                    const content = data.content;
+                    const url = data.url;
+                    
+                    const urlHeading = document.createElement('h5');
+                    urlHeading.className = 'mt-3 mb-2';
+                    urlHeading.innerHTML = `<i class="fas fa-link me-2"></i>${url}`;
+                    
+                    const contentPre = document.createElement('pre');
+                    contentPre.className = 'p-3 rounded';
+                    contentPre.style.whiteSpace = 'pre-wrap';
+                    contentPre.style.overflowX = 'auto';
+                    contentPre.textContent = content;
+                    
+                    resultsOutput.appendChild(urlHeading);
+                    resultsOutput.appendChild(contentPre);
+                } else {
+                    // Multiple URL results
+                    const results = data.results;
+                    
+                    for (const url in results) {
+                        const content = results[url];
+                        
+                        const urlHeading = document.createElement('h5');
+                        urlHeading.className = 'mt-4 mb-2';
+                        urlHeading.innerHTML = `<i class="fas fa-link me-2"></i>${url}`;
+                        
+                        const divider = document.createElement('hr');
+                        
+                        const contentPre = document.createElement('pre');
+                        contentPre.className = 'p-3 rounded';
+                        contentPre.style.whiteSpace = 'pre-wrap';
+                        contentPre.style.overflowX = 'auto';
+                        contentPre.textContent = content;
+                        
+                        resultsOutput.appendChild(urlHeading);
+                        resultsOutput.appendChild(contentPre);
+                        
+                        // Add divider if not the last URL
+                        const urlKeys = Object.keys(results);
+                        if (url !== urlKeys[urlKeys.length - 1]) {
+                            resultsOutput.appendChild(divider);
+                        }
+                    }
+                }
+                
+                // Scroll to results
+                resultsContainer.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>

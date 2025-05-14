@@ -1,0 +1,287 @@
+/* Dark Theme CSS for VR Logistics */
+
+/* Root variables for dark theme */
+[data-theme="dark"] {
+    --primary-color: #4e95ff;
+    --primary-dark: #397ad1;
+    --secondary-color: #212B36;
+    --text-color: #e4e4e4;
+    --bg-color: #121212;
+    --bg-light: #1e1e1e;
+    --card-bg: #222222;
+    --border-color: #333333;
+    --footer-bg: #0c0c0c;
+    --nav-bg: rgba(18, 18, 18, 0.95);
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --section-bg: #191919;
+}
+
+/* Default Light Theme variables */
+:root {
+    --primary-color: #007bff;
+    --primary-dark: #0062cc;
+    --secondary-color: #6c757d;
+    --text-color: #333333;
+    --bg-color: #ffffff;
+    --bg-light: #f8f9fa;
+    --card-bg: #ffffff;
+    --border-color: #dee2e6;
+    --footer-bg: #f5f5f5;
+    --nav-bg: rgba(255, 255, 255, 0.95);
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --section-bg: #f8f9fa;
+}
+
+/* Basic theme styling */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Navbar styling */
+.navbar {
+    background-color: var(--nav-bg) !important;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.navbar-light .navbar-brand {
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.navbar-toggler {
+    border-color: var(--border-color);
+}
+
+/* Cards styling */
+.card {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.card-body {
+    background-color: var(--card-bg);
+    transition: background-color 0.3s ease;
+}
+
+/* Hero section */
+.hero {
+    background-color: var(--section-bg);
+    transition: background-color 0.3s ease;
+}
+
+/* Background sections */
+.bg-light {
+    background-color: var(--bg-light) !important;
+    transition: background-color 0.3s ease;
+}
+
+.bg-primary {
+    background-color: var(--primary-color) !important;
+    transition: background-color 0.3s ease;
+}
+
+/* Text colors */
+.text-primary {
+    color: var(--primary-color) !important;
+    transition: color 0.3s ease;
+}
+
+.text-white {
+    color: var(--text-color) !important;
+    transition: color 0.3s ease;
+}
+
+[data-theme="dark"] .text-white {
+    color: #ffffff !important;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-light {
+    background-color: var(--bg-color);
+    border-color: var(--border-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Footer */
+footer {
+    background-color: var(--footer-bg);
+    transition: background-color 0.3s ease;
+}
+
+footer h5 {
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+footer p, footer li, footer a {
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+/* Accordion */
+.accordion-item {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.accordion-button {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: var(--bg-light);
+    color: var(--primary-color);
+}
+
+/* Forms */
+.form-control {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.form-control:focus {
+    background-color: var(--card-bg);
+    border-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+.form-label {
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+/* Service boxes */
+.service-box {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Icon containers */
+.rounded-circle.bg-primary {
+    background-color: var(--primary-color) !important;
+    transition: background-color 0.3s ease;
+}
+
+.rounded-circle.bg-light {
+    background-color: var(--bg-light) !important;
+    transition: background-color 0.3s ease;
+}
+
+/* Contact map */
+.contact-map {
+    border-color: var(--border-color);
+    transition: border-color 0.3s ease;
+}
+
+/* Product cards */
+.product-card {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+}
+
+.theme-toggle:hover {
+    background-color: var(--bg-light);
+}
+
+/* Images with dark theme filter */
+[data-theme="dark"] img:not(.no-filter) {
+    filter: brightness(0.8) contrast(1.2);
+    transition: filter 0.3s ease;
+}
+
+/* Social icons in dark mode */
+[data-theme="dark"] .social-icons a {
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .social-icons a:hover {
+    color: var(--primary-color) !important;
+}
+
+/* Footer links in dark mode */
+[data-theme="dark"] .footer-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Dark theme specific adjustments */
+[data-theme="dark"] .navbar-light .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.7)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+[data-theme="dark"] .shadow-sm {
+    box-shadow: 0 .125rem .25rem var(--shadow-color) !important;
+}
+
+/* Dark theme logo handling */
+[data-theme="dark"] .navbar-brand img,
+[data-theme="dark"] footer img {
+    filter: brightness(1.75);
+}
+
+/* Dark theme mode animation */
+@keyframes darkModeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+[data-theme="dark"] {
+    animation: darkModeIn 0.5s ease forwards;
+}

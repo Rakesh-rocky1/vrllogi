@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VR Logistics - Contact Us</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/dark-theme.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/logo.svg" alt="VR Logistics Logo" class="img-fluid">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Header -->
+    <section class="py-5 bg-light">
+        <div class="container text-center">
+            <h1>Contact Us</h1>
+            <p class="lead">We're here to help with any logistics needs</p>
+        </div>
+    </section>
+
+    <!-- Contact Info and Form -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0 animated">
+                    <div class="contact-info p-4 border rounded shadow-sm">
+                        <h3 class="mb-4 border-bottom pb-3">Get in Touch</h3>
+                        
+                        <div class="mb-4 d-flex">
+                            <div class="contact-icon-box me-3">
+                                <i class="fas fa-map-marker-alt fa-2x text-primary"></i>
+                            </div>
+                            <div>
+                                <h5>Our Location</h5>
+                                <p class="mb-0">123 Logistics Way</p>
+                                <p class="mb-0">Bangalore, 560001</p>
+                                <p>India</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4 d-flex">
+                            <div class="contact-icon-box me-3">
+                                <i class="fas fa-phone fa-2x text-primary"></i>
+                            </div>
+                            <div>
+                                <h5>Phone</h5>
+                                <p class="mb-0">+91 9876543210 (Main)</p>
+                                <p>+91 9876543211 (Support)</p>
+                                <p class="text-muted"><small>Call us for immediate assistance</small></p>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4 d-flex">
+                            <div class="contact-icon-box me-3">
+                                <i class="fas fa-envelope fa-2x text-primary"></i>
+                            </div>
+                            <div>
+                                <h5>Email</h5>
+                                <p class="mb-0">info@vrlogistics.com</p>
+                                <p>support@vrlogistics.com</p>
+                                <p class="text-muted"><small>We respond within 24 hours</small></p>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4 d-flex">
+                            <div class="contact-icon-box me-3">
+                                <i class="fas fa-clock fa-2x text-primary"></i>
+                            </div>
+                            <div>
+                                <h5>Business Hours</h5>
+                                <p class="mb-0">Monday - Friday: 9:00 AM - 6:00 PM</p>
+                                <p>Saturday: 10:00 AM - 2:00 PM</p>
+                                <p class="text-muted"><small>Closed on Sundays and holidays</small></p>
+                            </div>
+                        </div>
+                        
+                        <div class="social-contact mt-4 pt-3 border-top">
+                            <h5 class="mb-3">Connect With Us</h5>
+                            <div class="d-flex">
+                                <a href="#" class="btn btn-outline-primary me-2"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="btn btn-outline-primary me-2"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="btn btn-outline-primary me-2"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="btn btn-outline-primary me-2"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="btn btn-outline-primary"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-8 animated">
+                    <div class="card border-0 shadow">
+                        <div class="card-header bg-primary text-white py-3">
+                            <h3 class="mb-0"><i class="fas fa-paper-plane me-2"></i>Send us a Message</h3>
+                        </div>
+                        <div class="card-body p-4">
+                            <form id="contactForm">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="name" class="form-label">Your Name <span class="text-danger">*</span></label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                            <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                            <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                        <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="subject" class="form-label">Subject <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-tag"></i></span>
+                                        <input type="text" class="form-control" id="subject" placeholder="Enter subject" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="inquiry-type" class="form-label">Inquiry Type</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-question-circle"></i></span>
+                                        <select class="form-select" id="inquiry-type">
+                                            <option selected>Select your inquiry type</option>
+                                            <option value="general">General Inquiry</option>
+                                            <option value="product">Product Information</option>
+                                            <option value="pricing">Pricing & Quotes</option>
+                                            <option value="support">Technical Support</option>
+                                            <option value="partnership">Partnership Opportunities</option>
+                                            <option value="shipping">Shipping & Delivery</option>
+                                            <option value="bulk">Bulk Orders</option>
+                                            <option value="returns">Returns & Refunds</option>
+                                            <option value="quality">Quality Assurance</option>
+                                            <option value="payment">Payment Options</option>
+                                            <option value="complaint">Complaints</option>
+                                            <option value="feedback">Feedback & Suggestions</option>
+                                            <option value="career">Career Opportunities</option>
+                                            <option value="international">International Business</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="message" class="form-label">Message <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-comment"></i></span>
+                                        <textarea class="form-control" id="message" rows="5" placeholder="Enter your message" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="newsletter-subscribe">
+                                    <label class="form-check-label" for="newsletter-subscribe">Subscribe to our newsletter for updates and offers</label>
+                                </div>
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <button type="reset" class="btn btn-outline-secondary me-md-2"><i class="fas fa-redo me-2"></i>Reset</button>
+                                    <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane me-2"></i>Send Message</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- Newsletter Subscription -->
+                    <div class="card border-0 shadow mt-4">
+                        <div class="card-body p-4 bg-light">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <h4><i class="fas fa-envelope-open-text me-2 text-primary"></i>Subscribe to Updates</h4>
+                                    <p class="mb-md-0">Stay informed about our latest services, offers, and industry news.</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <form id="newsletterForm" class="d-flex">
+                                        <input type="email" class="form-control me-2" placeholder="Your email address" required>
+                                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Map -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row mb-4 text-center">
+                <div class="col-12">
+                    <h2><i class="fas fa-map-marked-alt text-primary me-2"></i>Our Location</h2>
+                    <p class="lead">Find us easily with the interactive map below</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 animated">
+                    <div class="card border-0 shadow">
+                        <div class="card-body p-0">
+                            <div id="google-map" class="contact-map rounded"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 animated mt-4 mt-lg-0">
+                    <div class="card border-0 shadow h-100">
+                        <div class="card-header bg-primary text-white py-3">
+                            <h4 class="mb-0"><i class="fas fa-directions me-2"></i>Directions</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-4">
+                                <h5>From Airport</h5>
+                                <p>Take the airport expressway and follow signs for the city center. After 15km, take exit 12 towards Electronics City. Our office is located 2km from the exit.</p>
+                            </div>
+                            <div class="mb-4">
+                                <h5>Public Transportation</h5>
+                                <p>Metro: Blue Line to Central Station, then Bus #45 to Logistics Hub stop.</p>
+                                <p>Bus: Routes #45, #67, and #89 stop directly in front of our building.</p>
+                            </div>
+                            <div>
+                                <h5>Parking</h5>
+                                <p>Free visitor parking is available in our underground parking facility (entrance from the east side of the building).</p>
+                            </div>
+                            <div class="mt-4 text-center">
+                                <a href="https://maps.google.com/?q=12.9716,77.5946" target="_blank" class="btn btn-primary"><i class="fas fa-external-link-alt me-2"></i>Open in Google Maps</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row mb-4 text-center">
+                <div class="col-12">
+                    <h2>Frequently Asked Questions</h2>
+                    <p class="lead">Quick answers to common questions</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 mx-auto animated">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    What areas do you provide logistics services?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    VR Logistics currently operates across 15+ major cities in India, with plans to expand to more locations soon. Our main hubs are in Bangalore, Mumbai, Delhi, Chennai, and Kolkata, from where we serve the surrounding regions as well.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    How can I track my shipment?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Once your order is processed, you will receive a tracking number via email. You can use this tracking number on our website's tracking portal or contact our customer support team for real-time updates on your shipment.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    What are your delivery timeframes?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Our standard delivery timeframe is 2-3 business days for major cities and 3-5 business days for other locations. We also offer express delivery options for urgent shipments with delivery within 24 hours in select locations.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Do you offer customized logistics solutions?
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes, we offer customized logistics solutions tailored to your specific business needs. Our team will work with you to develop a logistics strategy that optimizes your supply chain and reduces costs. Contact our sales team for a personalized consultation.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container text-center">
+            <h2 class="mb-4" style="color: white;">Need immediate assistance?</h2>
+            <p class="lead mb-4">Our customer support team is available to help you with any queries.</p>
+            <a href="tel:+919876543210" class="btn btn-light btn-lg me-2"><i class="fas fa-phone me-2"></i>Call Us</a>
+            <a href="mailto:info@vrlogistics.com" class="btn btn-outline-light btn-lg"><i class="fas fa-envelope me-2"></i>Email Us</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <img src="assets/logo.svg" alt="VR Logistics Logo" class="img-fluid mb-4" style="height: 40px;">
+                    <p>VR Logistics provides comprehensive supply chain management solutions to businesses worldwide. Our expertise in logistics ensures that your products reach customers efficiently and safely.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-lg-0 footer-links">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 footer-links">
+                    <h5>Services</h5>
+                    <ul>
+                        <li><a href="#">Warehousing</a></li>
+                        <li><a href="#">Transportation</a></li>
+                        <li><a href="#">Supply Chain</a></li>
+                        <li><a href="#">Distribution</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h5>Contact Info</h5>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Logistics Way, Bangalore, 560001</li>
+                        <li><i class="fas fa-phone"></i> +91 9876543210</li>
+                        <li><i class="fas fa-envelope"></i> info@vrlogistics.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row footer-bottom">
+                <div class="col-12 text-center">
+                    <p class="mb-0">&copy; 2023 VR Logistics. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Use a static map solution that doesn't require an API key -->
+    <script>
+        function initMap() {
+            const mapElement = document.getElementById('google-map');
+            if (mapElement) {
+                // Fallback to a static map image
+                mapElement.innerHTML = `
+                    <div class="position-relative h-100 d-flex align-items-center justify-content-center">
+                        <img src="https://maps.googleapis.com/maps/api/staticmap?center=12.9716,77.5946&zoom=14&size=600x400&maptype=roadmap&markers=color:red%7C12.9716,77.5946" alt="VR Logistics Location Map" class="img-fluid w-100 h-100 object-fit-cover">
+                        <div class="position-absolute top-50 start-50 translate-middle text-center p-4 bg-white bg-opacity-75 rounded shadow">
+                            <i class="fas fa-map-marker-alt fa-3x text-danger mb-3"></i>
+                            <h4>VR Logistics Headquarters</h4>
+                            <p class="mb-1">123 Logistics Way</p>
+                            <p class="mb-1">Bangalore, 560001</p>
+                            <p>India</p>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        
+        // Call initMap immediately to render the static map
+        document.addEventListener('DOMContentLoaded', initMap);
+    </script>
+    <!-- Custom JavaScript -->
+    <script src="js/scripts.js"></script>
+    
+    <script>
+        // Form submission handler (for demonstration)
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

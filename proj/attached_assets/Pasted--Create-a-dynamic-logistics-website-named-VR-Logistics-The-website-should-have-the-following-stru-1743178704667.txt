@@ -1,0 +1,69 @@
+"Create a dynamic logistics website named 'VR Logistics'. The website should have the following structure:
+
+    Navigation Bar:
+
+        Home
+
+        Products
+
+        About
+
+        Contact Us
+
+Each navigation option should lead to a separate file that contains its content:
+
+    Home: A welcoming page with a logistic-related background (such as a warehouse, trucks, or a map) that gives a professional feel. Include a logo for 'VR Logistics' at the top.
+
+    Products: A page listing five logistics-related products with attractive images and descriptions. The products are:
+
+        Oil (with image of oil container or related product)
+
+        Coffee Powder (image of coffee powder packaging)
+
+        Tea Powder (image of tea powder packaging)
+
+        Arecanut (image of arecanut)
+
+        Spices (image of different spices, like red chili powder, turmeric, etc.)
+
+    About: A short description of the logistics business, its mission, and the services it offers.
+
+    Contact Us: A page with contact details like phone, email, and an embedded Google Map for location.
+
+    Logo: A professional and simple logo for VR Logistics should appear on all pages at the top, next to the navigation bar.
+
+    Design Requirements:
+
+        The website should be visually appealing with a modern and clean design.
+
+        Use a color palette that is professional and clean, possibly with shades of blue, white, and gray.
+
+        Responsive design: the website should be mobile-friendly.
+
+        Use attractive typography and good spacing to make the content easy to read and navigate.
+
+        Include product photos with appropriate descriptions for each product in the Products section.
+
+    Functionality:
+
+        Use HTML, CSS, and JavaScript to create the pages and interactivity.
+
+        Make sure that the website is fully responsive for different screen sizes.
+
+    File Structure:
+
+        Create separate files for each of the following:
+
+            home.html
+
+            products.html
+
+            about.html
+
+            contact.html
+
+            styles.css for styling the pages
+
+            scripts.js for any dynamic elements, such as navigation hover effects or smooth scrolling.
+
+Ensure that the design is attractive and professional, and the navigation between pages is smooth and user-friendly. Provide appropriate code for all the components, including any JavaScript required for interactivity."
